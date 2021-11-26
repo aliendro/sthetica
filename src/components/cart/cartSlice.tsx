@@ -2,34 +2,40 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export interface CartState {
   cart: Product[];
-  amount: number;
-  totalPrice: Price;
+  totalItems: number;
+  subtotal: number;
 }
 
 const initialState: CartState = {
   cart: [],
-  amount: 0,
-  totalPrice: {
-    raw: 0,
-    withSymbol: 'R$ 0',
-  },
+  totalItems: 0,
+  subtotal: 0,
 };
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action) => {
-      state.amount = state.cart.push(action.payload);
-      state.totalPrice.raw = state.cart.reduce((acc, item) => acc + item.price.raw, 0);
-      state.totalPrice.withSymbol = `R$ ${state.totalPrice.raw}`;
-    },
-    removeFromCart: (state, action) => {
+    addToCart: (state, action: { type: string; payload: Product }) => {
       const idx = state.cart.findIndex((product) => product.id === action.payload.id);
-      state.cart.splice(idx, 1);
-      state.amount = state.cart.length;
-      state.totalPrice.raw = state.cart.reduce((acc, item) => acc + item.price.raw, 0);
-      state.totalPrice.withSymbol = `R$ ${state.totalPrice.raw}`;
+      if (state.cart[idx]) {
+        state.cart[idx].amount! += 1;
+      } else {
+        const product = { amount: 1, ...action.payload };
+        state.cart.push(product);
+      }
+      state.totalItems += 1;
+      state.subtotal += action.payload.price.raw;
+    },
+    removeFromCart: (state, action: { type: string; payload: Product }) => {
+      const idx = state.cart.findIndex((product) => product.id === action.payload.id);
+      if (state.cart[idx]?.amount === 1) {
+        state.cart.splice(idx, 1);
+      } else {
+        state.cart[idx].amount! -= 1;
+      }
+      state.totalItems -= 1;
+      state.subtotal -= action.payload.price.raw;
     },
   },
 });
