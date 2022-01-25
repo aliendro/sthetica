@@ -1,14 +1,11 @@
 module.exports = {
-  purge: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'media', // or 'media' or 'class'
+  content: ['./src/**/*.{html,ts,tsx}'],
   theme: {
-    flex: {
-      pancake: '0 1 250px',
+    extend: {
+      animation: {
+        'pulse-fast': 'pulse 1s linear infinite',
+      },
     },
-    extend: {},
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };

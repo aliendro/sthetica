@@ -1,17 +1,18 @@
-// Redux store
-import { useAppDispatch, useAppSelector } from 'app/store';
-
-// Cart actions
-import { addToCart, removeFromCart } from 'components/cart/cartSlice';
+import { useGetCartQuery } from 'services/chec';
+import { useLocalStorage } from 'hooks';
 
 const useCart = () => {
-  const dispatch = useAppDispatch();
-  const { cart, totalItems, subtotal } = useAppSelector((state) => state.cart);
+  const KEY = import.meta.env.VITE_CARTID as string;
+  const [cartId, sendToLocalStorage] = useLocalStorage(KEY, '');
+  const { data, isFetching } = useGetCartQuery();
 
-  const add = (p: Product) => dispatch(addToCart(p));
-  const remove = (p: Product) => dispatch(removeFromCart(p));
+  if (cartId === '' && !isFetching) sendToLocalStorage(data!.id);
 
-  return { cart, totalItems, subtotal, add, remove };
+  const refreshCart = () => {
+    sendToLocalStorage('');
+  };
+
+  return { cartId, refreshCart };
 };
 
 export default useCart;
