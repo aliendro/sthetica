@@ -1,35 +1,22 @@
-import { useEffect } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import CheckoutProgressBar from './progressbar/CheckoutProgressBar';
+import { lazy } from 'react';
+import ProgressBar from 'components/progressbar/ProgressBar';
+import useProgressBar from 'hooks/useProgressBar';
 
-type Step = {
-  state: 'shipping' | 'payment' | 'review';
-};
+const Shipping = lazy(() => import('./CheckoutShipping'));
+const Payment = lazy(() => import('./CheckoutPayment'));
+const Review = lazy(() => import('./CheckoutReview'));
+const Finish = lazy(() => import('./CheckoutFinish'));
 
-const Checkout = () => {
-  enum Steps {
-    shipping = 1,
-    payment,
-    review,
-  }
-  const location = useLocation();
-  const state = location.state as Step;
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (state === null) {
-      navigate('../cart');
-    }
-  }, [state]);
-
-  const currentStep = Steps[state];
+export default function Checkout() {
+  const { currentStep } = useProgressBar();
 
   return (
-    <section className="flex flex-col">
-      <CheckoutProgressBar currentStep={currentStep} />
-      <Outlet />
+    <section className="flex flex-col items-center justify-center">
+      <ProgressBar currentStep={currentStep} />
+      {currentStep === 0 && <Shipping />}
+      {currentStep === 1 && <Payment />}
+      {currentStep === 2 && <Review />}
+      {currentStep === 3 && <Finish />}
     </section>
   );
-};
-
-export default Checkout;
+}

@@ -1,10 +1,7 @@
-const Page404 = () => {
-  const text = 'not found';
+export default function Page404() {
   return (
     <div>
-      <div>{text}</div>
+      <div>not found</div>
     </div>
   );
-};
-
-export default Page404;
+}

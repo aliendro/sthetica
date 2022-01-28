@@ -1,6 +1,3 @@
-/**
- * Wrapper for Chec CommerceJS API.
- */
 import {
   useAddToCartMutation,
   useEmptyCartMutation,
@@ -9,9 +6,9 @@ import {
 } from 'services/chec';
 import { useCart } from 'hooks';
 
-const useCommerce = () => {
+export default function useCommerce() {
   const { cartId } = useCart();
-  const { data, isFetching } = useGetCartByIdQuery(cartId);
+  const { data, isFetching, refetch } = useGetCartByIdQuery(cartId);
   const [addItemToCart, { isLoading: isAdding }] = useAddToCartMutation();
   const [updateCart, { isLoading: isUpdating }] = useUpdateCartMutation();
   const [emptyCart, { isLoading: isClearing }] = useEmptyCartMutation();
@@ -37,7 +34,6 @@ const useCommerce = () => {
     add,
     update,
     clear,
+    refetch,
   };
-};
-
-export default useCommerce;
+}

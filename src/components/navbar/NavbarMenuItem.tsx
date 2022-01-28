@@ -1,28 +1,24 @@
 import { NavLink } from 'react-router-dom';
 
-type NavbarItemProps = {
+interface NavbarItemProps {
   to: string;
   label: string;
-  onClick: () => void;
-};
+  onClose: () => void;
+}
 
-const styles = {
-  menuItem: 'flex items-center p-4 transition-all w-full justify-center',
-};
-
-const NavbarMenuItem = ({ to, label, onClick }: NavbarItemProps) => (
-  <li className={styles.menuItem}>
-    <button type="button" onClick={onClick}>
-      <NavLink
-        to={to}
-        className={({ isActive }) =>
-          isActive ? 'text-red-500' : 'hover:underline hover:decoration-red-500'
-        }
-      >
-        {label}
-      </NavLink>
-    </button>
-  </li>
-);
-
-export default NavbarMenuItem;
+export default function NavbarMenuItem({ to, label, onClose }: NavbarItemProps) {
+  return (
+    <li className="flex w-full items-center justify-center p-4 transition-all">
+      <button type="button" onClick={onClose}>
+        <NavLink
+          to={to}
+          className={({ isActive }) =>
+            isActive ? 'text-red-500' : 'hover:underline hover:decoration-red-500'
+          }
+        >
+          {label}
+        </NavLink>
+      </button>
+    </li>
+  );
+}

@@ -1,23 +1,11 @@
 import './spinner.css';
 
-type Props = {
-  color?: string;
-};
-
-const Spinner = ({ color }: Props) => {
-  const circleStyles = 'w-4 h-4 rounded-full animate-pulse';
-  const circleClass = `${circleStyles} ${color}`;
+export default function Spinner() {
   return (
-    <div className="loader rounded-full flex items-center justify-center gap-1">
-      <div className={circleClass} />
-      <div className={circleClass} />
-      <div className={circleClass} />
+    <div className="loader title flex items-center justify-center gap-1 rounded-full">
+      <div className="h-5 w-5 animate-pulse rounded-full bg-black" />
+      <div className="h-5 w-5 animate-pulse rounded-full bg-black" />
+      <div className="h-5 w-5 animate-pulse rounded-full bg-black" />
     </div>
   );
-};
-
-Spinner.defaultProps = {
-  color: 'bg-black',
-};
-
-export default Spinner;
+}

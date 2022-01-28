@@ -56,9 +56,9 @@ export const checApi = createApi({
       query: () => '/services/locale/countries',
       transformResponse: (response: CountryList) => response.countries,
     }),
-    getSubdivisions: builder.query<Locale, string | void>({
+    getSubdivisions: builder.query<string[], string | void>({
       query: (countryCode) => `/services/locale/${countryCode}/subdivisions`,
-      transformResponse: (response: StateList) => response.subdivisions,
+      transformResponse: (response: StateList) => Object.keys(response.subdivisions),
     }),
     getCheckout: builder.query<CheckoutToken, string>({
       query: (cartId) => ({
@@ -69,7 +69,7 @@ export const checApi = createApi({
         },
       }),
     }),
-    captureOrder: builder.mutation<Order, { checkoutId: string; body: CheckoutCapture }>({
+    captureOrder: builder.query<Order, { checkoutId: string; body: CheckoutCapture }>({
       query: ({ checkoutId, body }) => ({
         url: `/checkouts/${checkoutId}`,
         method: 'POST',
@@ -88,9 +88,9 @@ export const {
   useUpdateCartMutation,
   useEmptyCartMutation,
   useGetCountriesQuery,
-  useLazyGetSubdivisionsQuery,
+  useGetSubdivisionsQuery,
   useGetCheckoutQuery,
-  useCaptureOrderMutation,
+  useLazyCaptureOrderQuery,
 } = checApi;
 
 export default checApi;

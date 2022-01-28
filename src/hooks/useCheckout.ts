@@ -1,21 +1,25 @@
 import { useCart } from 'hooks';
-import { useCaptureOrderMutation, useGetCheckoutQuery } from 'services/chec';
+import { useLazyCaptureOrderQuery, useGetCheckoutQuery } from 'services/chec';
 import { useAppSelector, useAppDispatch } from 'app/store';
 import { updateForm, updateOrder, updatePayment } from 'components/checkout/checkoutSlice';
 import { PaymentMethod } from '@stripe/stripe-js';
+import { useEffect } from 'react';
+import useCommerce from './useCommerce';
 
-const useCheckout = () => {
+export default function useCheckout() {
   const dispatch = useAppDispatch();
-  const { cartId } = useCart();
+  const { cartId, clear } = useCart();
   const { data: checkoutToken } = useGetCheckoutQuery(cartId);
   const checkout = useAppSelector((state) => state.checkout);
-  const [captureOrder] = useCaptureOrderMutation();
+  const { refetch } = useCommerce();
+  const [captureOrder, { data: checkoutResponse, isFetching: isCapturing }] =
+    useLazyCaptureOrderQuery();
 
-  const updateFormData = (state: CheckoutState) => {
+  function updateFormData(state: CheckoutState) {
     dispatch(updateForm(state));
-  };
+  }
 
-  const updateOrderData = (paymentId: string) => {
+  function updateOrderData(paymentId: string) {
     const body: CheckoutCapture = {
       line_items: checkoutToken?.live.line_items,
       customer: {
@@ -42,18 +46,24 @@ const useCheckout = () => {
       },
     };
     dispatch(updateOrder(body));
-  };
+  }
 
-  const updatePaymentData = (paymentMethod: PaymentMethod) => {
+  function updatePaymentData(paymentMethod: PaymentMethod) {
     dispatch(updatePayment(paymentMethod));
-  };
+  }
 
-  const order = () => {
+  function order() {
     captureOrder({
       checkoutId: checkoutToken?.id as string,
       body: checkout.order,
     });
-  };
+  }
+
+  useEffect(() => {
+    if (!isCapturing && checkoutResponse) {
+      clear();
+    }
+  }, [checkoutResponse]);
 
   return {
     formState: checkout.form,
@@ -63,7 +73,8 @@ const useCheckout = () => {
     paymentState: checkout.payment,
     updatePaymentData,
     order,
+    refetch,
+    checkoutResponse,
+    isCapturing,
   };
-};
-
-export default useCheckout;
+}
