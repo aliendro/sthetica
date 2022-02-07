@@ -76,7 +76,6 @@ export default function Navbar() {
           </li>
           <NavbarMenuItem to={url.home} label="products" onClose={close} />
           <NavbarMenuItem to={url.cart} label="cart" onClose={close} />
-          <NavbarMenuItem to={url.contact} label="contact" onClose={close} />
         </ul>
       </nav>
     </header>

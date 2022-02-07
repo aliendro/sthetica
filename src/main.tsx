@@ -18,8 +18,6 @@ import './index.css';
 const App = lazy(() => import('app/App'));
 const Cart = lazy(() => import('components/cart/Cart'));
 const Checkout = lazy(() => import('components/checkout/Checkout'));
-const Contact = lazy(() => import('components/contact/Contact'));
-const Page404 = lazy(() => import('components/page404/Page404'));
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK as string);
 
@@ -33,9 +31,8 @@ render(
               <Route path="/" element={<App />}>
                 <Route path="cart" element={<Cart />} />
                 <Route path="checkout" element={<Checkout />} />
-                <Route path="contact" element={<Contact />} />
               </Route>
-              <Route path="*" element={<Page404 />} />
+              <Route path="*" element={<div>Page not found.</div>} />
             </Routes>
           </BrowserRouter>
         </Elements>
