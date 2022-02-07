@@ -1,6 +1,6 @@
 ## About this app
 
-This is an simple artwork ecommerce. It was created using [Vite](https://vitejs.dev/), [React](https://reactjs.org), [Typescript](https://www.typescriptlang.org/), [CommerceJS](https://commercejs.com/), [Redux Toolkit](https://redux-toolkit.js.org/) and [TailwindCSS](https://tailwindcss.com/). Artwork provided by [sthethica](https://instagram.com/sthetica)
+This is a simple artwork ecommerce. It was created using [Vite](https://vitejs.dev/), [React](https://reactjs.org), [Typescript](https://www.typescriptlang.org/), [CommerceJS](https://commercejs.com/), [Redux Toolkit](https://redux-toolkit.js.org/) and [TailwindCSS](https://tailwindcss.com/). Artwork provided by [sthethica](https://instagram.com/sthetica)
 
 ### [Live demo](https://sthetica.netlify.com)
 
