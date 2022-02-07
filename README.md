@@ -4,16 +4,6 @@ This is a simple artwork ecommerce. It was created using [Vite](https://vitejs.d
 
 ### [Live demo](https://sthetica.netlify.com)
 
-## Screenshots
-
-| Home                                     | Navbar                                     |
-| ---------------------------------------- | ------------------------------------------ |
-| ![home](https://i.ibb.co/Ryv64P1/1.webp) | ![navbar](https://i.ibb.co/JqqntmW/2.webp) |
-
-| Cart                                              | Shipping details                                     |
-| ------------------------------------------------- | ---------------------------------------------------- |
-| ![shopping cart](https://i.ibb.co/wpLmJH6/3.webp) | ![shipping details](https://i.ibb.co/ZT7cbLs/4.webp) |
-
 ## How to run
 
 #### First clone repository using
@@ -53,3 +43,13 @@ This project is entirely made using Typescript, aiming type safety and better ma
 ## Known issues
 
 Pending UI and busy indicators could be reworked, adding some spinners or loading animations to improve UX. There is a considerable delay doing cart operations (add, remove and update) due to CommerceJS API.
+
+## Screenshots
+
+| Home                                     | Navbar                                     |
+| ---------------------------------------- | ------------------------------------------ |
+| ![home](https://i.ibb.co/Ryv64P1/1.webp) | ![navbar](https://i.ibb.co/JqqntmW/2.webp) |
+
+| Cart                                              | Shipping details                                     |
+| ------------------------------------------------- | ---------------------------------------------------- |
+| ![shopping cart](https://i.ibb.co/wpLmJH6/3.webp) | ![shipping details](https://i.ibb.co/ZT7cbLs/4.webp) |
