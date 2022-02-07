@@ -6,13 +6,13 @@ This is a simple artwork ecommerce. It was created using [Vite](https://vitejs.d
 
 ## Screenshots
 
-| Home                                        | Page not found                                       |
-| ------------------------------------------- | ---------------------------------------------------- |
-| ![home](https://i.ibb.co/Vg9C6kD/home.webp) | ![page not found](https://i.ibb.co/hY6qcs6/404.webp) |
+| Home                                     | Navbar                                     |
+| ---------------------------------------- | ------------------------------------------ |
+| ![home](https://i.ibb.co/Ryv64P1/1.webp) | ![navbar](https://i.ibb.co/JqqntmW/2.webp) |
 
-| Login                                         | Anime details                                            |
-| --------------------------------------------- | -------------------------------------------------------- |
-| ![login](https://i.ibb.co/n7xK7sw/login.webp) | ![single page](https://i.ibb.co/CJrWPrs/singlepage.webp) |
+| Cart                                              | Shipping details                                     |
+| ------------------------------------------------- | ---------------------------------------------------- |
+| ![shopping cart](https://i.ibb.co/wpLmJH6/3.webp) | ![shipping details](https://i.ibb.co/ZT7cbLs/4.webp) |
 
 ## How to run
 
