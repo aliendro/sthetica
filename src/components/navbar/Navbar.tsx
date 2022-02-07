@@ -48,7 +48,7 @@ export default function Navbar() {
           <li>
             <Link className="flex flex-col items-center justify-center gap-1" to={url.home}>
               <img className="aspect-square h-24 w-24 md:h-36 md:w-36" src={eyes} alt="logo" />
-              <div className="text-2xl tracking-wider">𝖘𝖙𝖍𝖊𝖙𝖍𝖎𝖈𝖆</div>
+              <div className="text-2xl tracking-wider">𝖘𝖙𝖍𝖊𝖙𝖎𝖈𝖆</div>
             </Link>
           </li>
           <li className="ml-auto grid pr-2">
