@@ -9,13 +9,13 @@ This is a simple artwork ecommerce. It was created using [Vite](https://vitejs.d
 #### First clone repository using
 
 ```sh
-git clone https://github.com/aliendro/sthethica
+git clone https://github.com/aliendro/sthetica
 ```
 
 #### Go to animehub directory
 
 ```sh
-cd sthethica
+cd sthetica
 ```
 
 #### Install dependencies
