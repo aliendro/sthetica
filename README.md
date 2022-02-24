@@ -1,6 +1,6 @@
 ## About this app
 
-This is a simple artwork ecommerce. It was created using [Vite](https://vitejs.dev/), [React](https://reactjs.org), [Typescript](https://www.typescriptlang.org/), [CommerceJS](https://commercejs.com/), [Redux Toolkit](https://redux-toolkit.js.org/) and [TailwindCSS](https://tailwindcss.com/). Artwork provided by [sthethica](https://instagram.com/sthetica)
+An artwork ecommerce project made with [Vite](https://vitejs.dev/), [React](https://reactjs.org), [Typescript](https://www.typescriptlang.org/), [Redux Toolkit](https://redux-toolkit.js.org/), [TailwindCSS](https://tailwindcss.com/) and [CommerceJS](https://commercejs.com/). It also has Stripe integration, ensuring security best practices in payment processing.
 
 ### [Live demo](https://sthetica.netlify.com)
 
